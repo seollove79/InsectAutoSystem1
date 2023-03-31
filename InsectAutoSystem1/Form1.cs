@@ -35,7 +35,6 @@ namespace InsectAutoSystem1
         private bool scaleConnectCheck;
         private float weight;
         private String controllerData;
-        private double targetFeedWeight = 3;
         private String rfidCode;
         private bool runThreadEnable = false;
         private bool motorRun = false;
@@ -71,9 +70,16 @@ namespace InsectAutoSystem1
             var responseValues = strData.Split(',');
             if (Int32.Parse(responseValues[3])==1) //센서1에 물체가 감지되면
             {
-                if (DeviceState.getFeedState() == DeviceState.FeedState.None)
+                if (DeviceState.getFeedState() == DeviceState.FeedState.None) //TODO end도 넣어야 하지 않나?
                 {
-                    DeviceState.setFeedState(DeviceState.FeedState.NewBox);
+                    if (weight > DeviceState.targetFeedWeight)
+                    {
+                        DeviceState.setFeedState(DeviceState.FeedState.End);
+                    }
+                    else
+                    {
+                        DeviceState.setFeedState(DeviceState.FeedState.NewBox);
+                    }
                 }
             }
             else if(Int32.Parse(responseValues[3]) == 0)
@@ -232,12 +238,11 @@ namespace InsectAutoSystem1
         {
             while (true)
             {
-                Console.WriteLine(DeviceState.getFeedState());
                 if (DeviceState.getFeedState() == DeviceState.FeedState.NewBox)
                 {
                     controller.sendCommand("shuttle_run");
                     DeviceState.setFeedState(DeviceState.FeedState.Feeding);
-                    while (weight < targetFeedWeight && DeviceState.getFeedState() == DeviceState.FeedState.Feeding)
+                    while (weight < DeviceState.targetFeedWeight && DeviceState.getFeedState() == DeviceState.FeedState.Feeding)
                     {
 
                     }
@@ -255,7 +260,6 @@ namespace InsectAutoSystem1
                 if (motorRun==true && (DeviceState.getFeedState() == DeviceState.FeedState.None || DeviceState.getFeedState() == DeviceState.FeedState.End))
                 {
                     controller.sendCommand("motor_run");
-                    Console.WriteLine("모터런 신호 줬다.");
                 }
                 Thread.Sleep(2000);
             }
