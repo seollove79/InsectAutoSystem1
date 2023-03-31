@@ -80,15 +80,6 @@ namespace InsectAutoSystem1
             {
                 DeviceState.setFeedState(DeviceState.FeedState.None);
             }
-
-/*            if (Int32.Parse(responseValues[4]) == 1) //센서2에 물체가 감지되면
-            {
-                runThread.Start();
-            }
-            else if (Int32.Parse(responseValues[4]) == 0)
-            {
-                runThread.Abort();
-            }*/
         }
 
         private void setSerialPort()
@@ -97,6 +88,31 @@ namespace InsectAutoSystem1
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+
+                foreach(string port in ports)
+                {
+                    if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
+                    {
+                        ShowMessageDelegate del1 = showMessage;
+                        MonitorControllerDataDelegate del2 = monitorControllerData;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        controller = new Controller(str, del2, del1);
+                    }
+
+                    if (port.Contains("Prolific USB"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        scale = new Scale(str, del);
+                        scaleThread.Start();
+                        getWeightThread.Start();
+                    }
+                }
+
                 cbScalePort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
                 cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
             }
