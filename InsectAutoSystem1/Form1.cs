@@ -244,5 +244,24 @@ namespace InsectAutoSystem1
                 Thread.Sleep(2000);
             }
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(scaleThread.IsAlive) { 
+                scaleThread.Abort();
+            }
+            if(getWeightThread.IsAlive)
+            {
+                getWeightThread.Abort();
+            }
+            if(feedThread.IsAlive)
+            {
+                feedThread.Abort();
+            }
+            if(runThread.IsAlive)
+            {
+                runThread.Abort();
+            }
+        }
     }
 }
