@@ -34,7 +34,6 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnConnectScale = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbScalePort = new System.Windows.Forms.ComboBox();
@@ -45,13 +44,13 @@ namespace InsectAutoSystem1
             this.btnSnapshot = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbWeight = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -124,12 +123,12 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.btnConnectScale, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.cbScalePort, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnConnectController, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.cbControlPort, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.cbControlPort, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.btnConnectController, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -139,16 +138,6 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(378, 187);
             this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 58);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 12);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "3. 제어연결";
             // 
             // btnConnectScale
             // 
@@ -183,9 +172,9 @@ namespace InsectAutoSystem1
             // 
             // btnConnectController
             // 
-            this.btnConnectController.Location = new System.Drawing.Point(282, 53);
+            this.btnConnectController.Location = new System.Drawing.Point(282, 28);
             this.btnConnectController.Name = "btnConnectController";
-            this.btnConnectController.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectController.Size = new System.Drawing.Size(75, 19);
             this.btnConnectController.TabIndex = 8;
             this.btnConnectController.Text = "연결";
             this.btnConnectController.UseVisualStyleBackColor = true;
@@ -193,10 +182,9 @@ namespace InsectAutoSystem1
             // 
             // cbControlPort
             // 
-            this.cbControlPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbControlPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbControlPort.FormattingEnabled = true;
-            this.cbControlPort.Location = new System.Drawing.Point(76, 53);
+            this.cbControlPort.Location = new System.Drawing.Point(76, 28);
             this.cbControlPort.Name = "cbControlPort";
             this.cbControlPort.Size = new System.Drawing.Size(200, 20);
             this.cbControlPort.TabIndex = 10;
@@ -217,10 +205,9 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel5.Controls.Add(this.btnSnapshot, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnStart, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnStop, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button3, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnSnapshot, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 216);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -231,10 +218,9 @@ namespace InsectAutoSystem1
             // 
             // btnSnapshot
             // 
-            this.btnSnapshot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSnapshot.Location = new System.Drawing.Point(282, 3);
+            this.btnSnapshot.Location = new System.Drawing.Point(203, 3);
             this.btnSnapshot.Name = "btnSnapshot";
-            this.btnSnapshot.Size = new System.Drawing.Size(99, 94);
+            this.btnSnapshot.Size = new System.Drawing.Size(73, 94);
             this.btnSnapshot.TabIndex = 3;
             this.btnSnapshot.Text = "Snapshot";
             this.btnSnapshot.UseVisualStyleBackColor = true;
@@ -261,16 +247,6 @@ namespace InsectAutoSystem1
             this.btnStop.Text = "동작정지";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(203, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 94);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -341,6 +317,16 @@ namespace InsectAutoSystem1
             this.tbWeight.Size = new System.Drawing.Size(313, 21);
             this.tbWeight.TabIndex = 3;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 33);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 12);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "2. 제어연결";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -382,8 +368,6 @@ namespace InsectAutoSystem1
         private System.Windows.Forms.ComboBox cbScalePort;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnConnectController;
         private System.Windows.Forms.ComboBox cbControlPort;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -392,6 +376,7 @@ namespace InsectAutoSystem1
         private System.Windows.Forms.TextBox tbBoxCode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbWeight;
+        private System.Windows.Forms.Label label3;
     }
 }
 
