@@ -27,7 +27,6 @@ namespace InsectAutoSystem1
         private Camera camera;
         private Scale scale;
         private Controller controller;
-        Thread scaleThread;
         Thread getWeightThread;
         Thread feedThread;
         Thread runThread;
@@ -43,7 +42,6 @@ namespace InsectAutoSystem1
         {
             InitializeComponent();
             getWeightThread = new Thread(refreshWeight);
-            scaleThread = new Thread(readScale);
             feedThread = new Thread(feed);
             runThread = new Thread(run);
             scaleConnectCheck = false;
@@ -97,7 +95,7 @@ namespace InsectAutoSystem1
 
                 foreach(string port in ports)
                 {
-                    if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
+                    if (port.Contains("USB Serial Port"))
                     {
                         ShowMessageDelegate del1 = showMessage;
                         MonitorControllerDataDelegate del2 = monitorControllerData;
@@ -114,7 +112,7 @@ namespace InsectAutoSystem1
                         str = str.Replace(" ", "");
                         str = str.Replace(")", "");
                         scale = new Scale(str, del);
-                        scaleThread.Start();
+                        scale.setSerialPort();
                         getWeightThread.Start();
                     }
                 }
@@ -176,7 +174,7 @@ namespace InsectAutoSystem1
             string str = (cbScalePort.Text).Split('-')[0];
             str = str.Replace(" ", "");
             scale = new Scale(str, del);
-            scaleThread.Start();
+            scale.setSerialPort();
             getWeightThread.Start();
         }
 
@@ -188,6 +186,7 @@ namespace InsectAutoSystem1
                 this.Invoke(new Action(delegate () {
                     tbWeight.Text = weight.ToString();
                 }));
+                Thread.Sleep(100);
             }
         }
 
@@ -267,9 +266,6 @@ namespace InsectAutoSystem1
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(scaleThread.IsAlive) { 
-                scaleThread.Abort();
-            }
             if(getWeightThread.IsAlive)
             {
                 getWeightThread.Abort();

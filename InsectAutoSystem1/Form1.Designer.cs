@@ -37,20 +37,20 @@ namespace InsectAutoSystem1
             this.btnConnectScale = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbScalePort = new System.Windows.Forms.ComboBox();
-            this.btnConnectController = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.cbControlPort = new System.Windows.Forms.ComboBox();
+            this.btnConnectController = new System.Windows.Forms.Button();
             this.tbLog = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSnapshot = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.btnSnapshot = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbWeight = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -170,15 +170,15 @@ namespace InsectAutoSystem1
             this.cbScalePort.Size = new System.Drawing.Size(200, 20);
             this.cbScalePort.TabIndex = 0;
             // 
-            // btnConnectController
+            // label3
             // 
-            this.btnConnectController.Location = new System.Drawing.Point(282, 28);
-            this.btnConnectController.Name = "btnConnectController";
-            this.btnConnectController.Size = new System.Drawing.Size(75, 19);
-            this.btnConnectController.TabIndex = 8;
-            this.btnConnectController.Text = "연결";
-            this.btnConnectController.UseVisualStyleBackColor = true;
-            this.btnConnectController.Click += new System.EventHandler(this.btnConnectController_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 33);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 12);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "2. 제어연결";
             // 
             // cbControlPort
             // 
@@ -188,6 +188,16 @@ namespace InsectAutoSystem1
             this.cbControlPort.Name = "cbControlPort";
             this.cbControlPort.Size = new System.Drawing.Size(200, 20);
             this.cbControlPort.TabIndex = 10;
+            // 
+            // btnConnectController
+            // 
+            this.btnConnectController.Location = new System.Drawing.Point(282, 28);
+            this.btnConnectController.Name = "btnConnectController";
+            this.btnConnectController.Size = new System.Drawing.Size(75, 19);
+            this.btnConnectController.TabIndex = 8;
+            this.btnConnectController.Text = "연결";
+            this.btnConnectController.UseVisualStyleBackColor = true;
+            this.btnConnectController.Click += new System.EventHandler(this.btnConnectController_Click);
             // 
             // tbLog
             // 
@@ -216,16 +226,6 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel5.Size = new System.Drawing.Size(384, 100);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
-            // btnSnapshot
-            // 
-            this.btnSnapshot.Location = new System.Drawing.Point(203, 3);
-            this.btnSnapshot.Name = "btnSnapshot";
-            this.btnSnapshot.Size = new System.Drawing.Size(73, 94);
-            this.btnSnapshot.TabIndex = 3;
-            this.btnSnapshot.Text = "Snapshot";
-            this.btnSnapshot.UseVisualStyleBackColor = true;
-            this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
-            // 
             // btnStart
             // 
             this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -247,6 +247,16 @@ namespace InsectAutoSystem1
             this.btnStop.Text = "동작정지";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnSnapshot
+            // 
+            this.btnSnapshot.Location = new System.Drawing.Point(203, 3);
+            this.btnSnapshot.Name = "btnSnapshot";
+            this.btnSnapshot.Size = new System.Drawing.Size(73, 94);
+            this.btnSnapshot.TabIndex = 3;
+            this.btnSnapshot.Text = "Snapshot";
+            this.btnSnapshot.UseVisualStyleBackColor = true;
+            this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
             // groupBox4
             // 
@@ -316,16 +326,6 @@ namespace InsectAutoSystem1
             this.tbWeight.ReadOnly = true;
             this.tbWeight.Size = new System.Drawing.Size(313, 21);
             this.tbWeight.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 33);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 12);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "2. 제어연결";
             // 
             // Form1
             // 
