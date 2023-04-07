@@ -28,24 +28,22 @@ namespace InsectAutoSystem1
         private Scale scale;
         private Controller controller;
         private Cardreader cardreader;
-        Thread getWeightThread;
-        Thread feedThread;
-        Thread runThread;
+
+        private Thread getWeightThread;
+        private Thread getDeviceInfoThread;
 
         private bool scaleConnectCheck;
         private bool cardreaderConnectCheck;
         private float weight;
         private String controllerData;
         private String rfidCode;
-        private bool runThreadEnable = false;
         private bool motorRun = false;
 
         public Form1()
         {
             InitializeComponent();
             getWeightThread = new Thread(refreshWeight);
-            feedThread = new Thread(feed);
-            runThread = new Thread(run);
+            getDeviceInfoThread = new Thread(getDeviceInfo);
             scaleConnectCheck = false;
             cardreaderConnectCheck = false;
         }
@@ -66,6 +64,15 @@ namespace InsectAutoSystem1
             init();
         }
 
+        private void getDeviceInfo()
+        {
+            while (true)
+            {
+                controller.sendCommand("get_info");
+                Thread.Sleep(2000);
+            }
+        }
+
         private void monitorControllerData(String strData)
         {
             var responseValues = strData.Split(',');
@@ -80,6 +87,7 @@ namespace InsectAutoSystem1
                     else
                     {
                         DeviceState.setFeedState(DeviceState.FeedState.NewBox);
+                        feed();
                     }
                 }
             }
@@ -128,7 +136,6 @@ namespace InsectAutoSystem1
                         str = str.Replace(")", "");
                         cardreader = new Cardreader(str, del);
                         cardreader.setSerialPort();
-                        //getWeightThread.Start();
                     }
                 }
 
@@ -136,16 +143,6 @@ namespace InsectAutoSystem1
                 cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
                 cbCardreaderPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
             }
-        }
-
-        private void readScale()
-        {
-            scale.setSerialPort();
-        }
-
-        private void btnSnapshot_Click(object sender, EventArgs e)
-        {
-            camera.makeSnapshot();
         }
 
         private void showVideoFrame(Bitmap videoFrame)
@@ -205,6 +202,16 @@ namespace InsectAutoSystem1
             while (true)
             {
                 weight = scale.getWeight();
+                if (DeviceState.getFeedState() == DeviceState.FeedState.Feeding) //셔틀동작하고 있을때
+                { 
+                    if (weight >= DeviceState.targetFeedWeight)
+                    {
+                        DeviceState.setFeedState(DeviceState.FeedState.Full);
+                        controller.sendCommand("shuttle_stop");
+                        controller.sendCommand("motor_run");
+                        DeviceState.setFeedState(DeviceState.FeedState.End);
+                    }
+                }
                 this.Invoke(new Action(delegate () {
                     tbWeight.Text = weight.ToString();
                 }));
@@ -214,16 +221,12 @@ namespace InsectAutoSystem1
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != '#')
+            if (e.KeyChar == 'a')
             {
-                rfidCode += e.KeyChar;
-            }
-            else
-            {
-                if (rfidCode != tbBoxCode.Text) {
-                    tbBoxCode.Text = rfidCode;
+                if(motorRun)
+                {
+                    controller.sendCommand("motor_run");
                 }
-                rfidCode = "";
             }
         }
 
@@ -246,43 +249,15 @@ namespace InsectAutoSystem1
         private void btnStart_Click(object sender, EventArgs e)
         {
             motorRun = true;
-            if (!runThread.IsAlive) { 
-                runThread.Start();
-            }
-            if (!feedThread.IsAlive)
-            {
-                feedThread.Start();
-            }
+            controller.sendCommand("motor_run");
         }
 
         private void feed()
         {
-            while (true)
+            if (DeviceState.getFeedState() == DeviceState.FeedState.NewBox)
             {
-                if (DeviceState.getFeedState() == DeviceState.FeedState.NewBox)
-                {
-                    controller.sendCommand("shuttle_run");
-                    DeviceState.setFeedState(DeviceState.FeedState.Feeding);
-                    while (weight < DeviceState.targetFeedWeight && DeviceState.getFeedState() == DeviceState.FeedState.Feeding)
-                    {
-                        
-                    }
-                    controller.sendCommand("shuttle_stop");
-                    DeviceState.setFeedState(DeviceState.FeedState.Full);
-                    DeviceState.setFeedState(DeviceState.FeedState.End);
-                }
-            }
-        }
-
-        private void run()
-        {
-            while (true)
-            {
-                if (motorRun==true && (DeviceState.getFeedState() == DeviceState.FeedState.None || DeviceState.getFeedState() == DeviceState.FeedState.End))
-                {
-                    controller.sendCommand("motor_run");
-                }
-                Thread.Sleep(2000);
+                DeviceState.setFeedState(DeviceState.FeedState.Feeding);
+                controller.sendCommand("shuttle_run");
             }
         }
 
@@ -291,14 +266,6 @@ namespace InsectAutoSystem1
             if(getWeightThread.IsAlive)
             {
                 getWeightThread.Abort();
-            }
-            if(feedThread.IsAlive)
-            {
-                feedThread.Abort();
-            }
-            if(runThread.IsAlive)
-            {
-                runThread.Abort();
             }
         }
     }

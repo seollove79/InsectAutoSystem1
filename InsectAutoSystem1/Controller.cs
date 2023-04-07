@@ -41,9 +41,10 @@ namespace InsectAutoSystem1
 
         public void sendCommand(String command)
         {
+            //Console.WriteLine("제어명령 : " + command);
             if (command == "motor_run")
             {
-                if(DeviceState.getFeedState() == DeviceState.FeedState.None || DeviceState.getFeedState() == DeviceState.FeedState.End) { 
+                if(DeviceState.getFeedState() == DeviceState.FeedState.None || DeviceState.getFeedState() == DeviceState.FeedState.End || DeviceState.getFeedState() == DeviceState.FeedState.Full) { 
                     serialPort.Write("!");
                     byte[] bytes = { 0x01, 0x01, 0x9A, 0xE1 };
                     serialPort.Write(bytes, 0, 4);
@@ -71,6 +72,14 @@ namespace InsectAutoSystem1
             {
                 serialPort.Write("!");
                 byte[] bytes = { 0x03, 0x00, 0x3a, 0x21 };
+                serialPort.Write(bytes, 0, 4);
+                serialPort.Write("\r\n");
+            }
+
+            if (command == "get_info")
+            {
+                serialPort.Write("!");
+                byte[] bytes = { 0x00, 0x01, 0x0a, 0xe0};
                 serialPort.Write(bytes, 0, 4);
                 serialPort.Write("\r\n");
             }

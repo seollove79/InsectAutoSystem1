@@ -46,8 +46,14 @@ namespace InsectAutoSystem1
         {
             string str = serialPort.ReadLine();
             str = str.Replace(" ", string.Empty);
-            weight = float.Parse(str);
-            //Console.WriteLine(weight);
+            try
+            {
+                weight = float.Parse(str);
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public float getWeight()
