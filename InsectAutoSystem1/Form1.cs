@@ -27,11 +27,13 @@ namespace InsectAutoSystem1
         private Camera camera;
         private Scale scale;
         private Controller controller;
+        private Cardreader cardreader;
         Thread getWeightThread;
         Thread feedThread;
         Thread runThread;
 
         private bool scaleConnectCheck;
+        private bool cardreaderConnectCheck;
         private float weight;
         private String controllerData;
         private String rfidCode;
@@ -45,6 +47,7 @@ namespace InsectAutoSystem1
             feedThread = new Thread(feed);
             runThread = new Thread(run);
             scaleConnectCheck = false;
+            cardreaderConnectCheck = false;
         }
 
         private void init()
@@ -114,11 +117,24 @@ namespace InsectAutoSystem1
                         scale = new Scale(str, del);
                         scale.setSerialPort();
                         getWeightThread.Start();
+
+                    }
+
+                    if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        cardreader = new Cardreader(str, del);
+                        cardreader.setSerialPort();
+                        //getWeightThread.Start();
                     }
                 }
 
                 cbScalePort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
                 cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+                cbCardreaderPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
             }
         }
 
@@ -164,6 +180,12 @@ namespace InsectAutoSystem1
                     cbControlPort.Enabled = false;
                     btnConnectController.Enabled = false;
                     scaleConnectCheck = true;
+                }
+                if (str == "카드리더가 연결되었습니다.\r\n")
+                {
+                    cbCardreaderPort.Enabled = false;
+                    btnConnectCardreader.Enabled = false;
+                    cardreaderConnectCheck = true;
                 }
             }));
         }
