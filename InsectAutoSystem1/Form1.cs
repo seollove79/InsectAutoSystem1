@@ -221,12 +221,17 @@ namespace InsectAutoSystem1
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 'a')
+            if (e.KeyChar == 'a' || e.KeyChar == 'A')
             {
-                if(motorRun)
+                if (motorRun)
                 {
                     controller.sendCommand("motor_run");
                 }
+            }
+
+            if (e.KeyChar == 's' || e.KeyChar == 'S')
+            {
+                camera.makeSnapshot();
             }
         }
 
@@ -235,6 +240,7 @@ namespace InsectAutoSystem1
             motorRun = false;
             controller.sendCommand("motor_stop");
             controller.sendCommand("shuttle_stop");
+            btnStart.Enabled = true;
         }
 
         private void btnConnectController_Click(object sender, EventArgs e)
@@ -250,6 +256,11 @@ namespace InsectAutoSystem1
         {
             motorRun = true;
             controller.sendCommand("motor_run");
+            if (!getDeviceInfoThread.IsAlive) 
+            {
+                getDeviceInfoThread.Start();
+            }
+            btnStart.Enabled = false;
         }
 
         private void feed()
