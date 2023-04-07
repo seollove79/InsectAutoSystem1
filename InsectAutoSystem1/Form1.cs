@@ -265,13 +265,13 @@ namespace InsectAutoSystem1
                     DeviceState.setFeedState(DeviceState.FeedState.Feeding);
                     while (weight < DeviceState.targetFeedWeight && DeviceState.getFeedState() == DeviceState.FeedState.Feeding)
                     {
-
+                        
                     }
                     controller.sendCommand("shuttle_stop");
                     DeviceState.setFeedState(DeviceState.FeedState.Full);
                     DeviceState.setFeedState(DeviceState.FeedState.End);
                 }
-                }
+            }
         }
 
         private void run()

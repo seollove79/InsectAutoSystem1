@@ -45,6 +45,9 @@ namespace InsectAutoSystem1
 
         }
 
-        
+        private void read()
+        {
+
+        }
     }
 }
