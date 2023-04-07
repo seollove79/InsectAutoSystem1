@@ -63,9 +63,9 @@ namespace InsectAutoSystem1
             showVideoFrameDelegate(videoFrame);
         }
 
-        public bool makeSnapshot()
+        public bool makeSnapshot(string cardNumber)
         {
-            string filePath = "d:\\TestImage.bmp";
+            string filePath = "d:\\" + cardNumber + ".bmp";
             if (File.Exists(filePath)) // 파일이 존재하는 경우 memory leak이 발생한다.
             {
                 // 파일을 삭제하여 memory leak을 방지한다.

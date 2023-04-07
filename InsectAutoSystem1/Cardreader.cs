@@ -12,6 +12,7 @@ namespace InsectAutoSystem1
         private SerialPort serialPort = new SerialPort();
         private string serialPortName;
         private ShowMessageDelegate showMessageDelegate;
+        private List<int> receiveData = new List<int>();
         private string cardNumber;
 
         public Cardreader(string strSerialPortName, ShowMessageDelegate del)
@@ -40,14 +41,50 @@ namespace InsectAutoSystem1
             }
         }
 
+        int count = 0;
+
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)  //수신 이벤트가 발생하면 이 부분이 실행된다.
         {
+            int i_recv_size = serialPort.BytesToRead;
+            byte[] b_tmp_buf = new byte[i_recv_size];
+            serialPort.Read(b_tmp_buf, 0, i_recv_size);
 
+            foreach (var temp in b_tmp_buf)
+            {
+                if (temp == 1)
+                {
+                    receiveData.Clear();
+                    count = 0;
+                    showMessageDelegate("사육상자 번호를 인식하지 못하였습니다.\r\n");
+                    break;
+                }
+
+                receiveData.Add(temp);
+                count++;
+                
+                if(count == 11)
+                {
+                    for(int i=3; i<11; i++)
+                    {
+                        cardNumber = cardNumber + (char)receiveData[i];
+                    }
+                    showMessageDelegate("사육상자 번호를 인식하였습니다.\r\n");
+                    count = 0;
+                    cardNumber = "";
+                    receiveData.Clear();
+                }
+            }
         }
 
-        private void read()
+        public string getCardNumber()
         {
+            return cardNumber;
+        }
 
+        public void read()
+        {
+            byte[] readByte = { 0x23, 0x03, 0x02, 0x00, 0x02 };
+            serialPort.Write(readByte, 0, readByte.Length);
         }
     }
 }

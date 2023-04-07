@@ -23,7 +23,6 @@ namespace InsectAutoSystem1
 
         public static void setFeedState(FeedState state)
         {
-            Console.WriteLine("상태변경 : " + state);
             feedState = state;
         }
 

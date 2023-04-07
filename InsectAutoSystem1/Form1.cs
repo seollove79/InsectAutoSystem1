@@ -184,6 +184,10 @@ namespace InsectAutoSystem1
                     btnConnectCardreader.Enabled = false;
                     cardreaderConnectCheck = true;
                 }
+                if (str == "사육상자 번호를 인식하였습니다.\r\n")
+                {
+                    tbBoxCode.Text = cardreader.getCardNumber();
+                }
             }));
         }
 
@@ -225,13 +229,12 @@ namespace InsectAutoSystem1
             {
                 if (motorRun)
                 {
+                    cardreader.read();
+                    Thread.Sleep(1000);
+                    camera.makeSnapshot(cardreader.getCardNumber());
+                    Thread.Sleep(1000);
                     controller.sendCommand("motor_run");
                 }
-            }
-
-            if (e.KeyChar == 's' || e.KeyChar == 'S')
-            {
-                camera.makeSnapshot();
             }
         }
 
@@ -255,7 +258,6 @@ namespace InsectAutoSystem1
         private void btnStart_Click(object sender, EventArgs e)
         {
             motorRun = true;
-            controller.sendCommand("motor_run");
             if (!getDeviceInfoThread.IsAlive) 
             {
                 getDeviceInfoThread.Start();
@@ -277,6 +279,11 @@ namespace InsectAutoSystem1
             if(getWeightThread.IsAlive)
             {
                 getWeightThread.Abort();
+            }
+
+            if (getDeviceInfoThread.IsAlive)
+            {
+                getDeviceInfoThread.Abort();
             }
         }
     }
