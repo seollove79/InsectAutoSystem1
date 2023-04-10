@@ -95,6 +95,14 @@ namespace InsectAutoSystem1
             {
                 DeviceState.setFeedState(DeviceState.FeedState.None);
             }
+
+            if (DeviceState.getFeedState() == DeviceState.FeedState.End)
+            {
+                if(Int32.Parse(responseValues[1]) == 0)
+                {
+                    controller.sendCommand("motor_run");
+                }
+            }
         }
 
         private void setSerialPort()
@@ -151,7 +159,14 @@ namespace InsectAutoSystem1
             {
                 pictureBox1.Image.Dispose();
             }
-            pictureBox1.Image = videoFrame;
+            try
+            { 
+                pictureBox1.Image = videoFrame;
+            }
+            catch (Exception ex)
+            {
+                tbLog.Text += ex.Message + "\r\n";
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -187,6 +202,11 @@ namespace InsectAutoSystem1
                 if (str == "사육상자 번호를 인식하였습니다.\r\n")
                 {
                     tbBoxCode.Text = cardreader.getCardNumber();
+                    Thread.Sleep(1000);
+                    camera.makeSnapshot(cardreader.getCardNumber());
+                    Console.WriteLine("현재시간 : " + DateTime.Now.ToString());
+                    Thread.Sleep(1000);
+                    controller.sendCommand("motor_run");
                 }
             }));
         }
@@ -230,10 +250,6 @@ namespace InsectAutoSystem1
                 if (motorRun)
                 {
                     cardreader.read();
-                    Thread.Sleep(1000);
-                    camera.makeSnapshot(cardreader.getCardNumber());
-                    Thread.Sleep(1000);
-                    controller.sendCommand("motor_run");
                 }
             }
         }

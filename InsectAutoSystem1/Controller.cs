@@ -41,7 +41,6 @@ namespace InsectAutoSystem1
 
         public void sendCommand(String command)
         {
-            //Console.WriteLine("제어명령 : " + command);
             if (command == "motor_run")
             {
                 if(DeviceState.getFeedState() == DeviceState.FeedState.None || DeviceState.getFeedState() == DeviceState.FeedState.End || DeviceState.getFeedState() == DeviceState.FeedState.Full) { 

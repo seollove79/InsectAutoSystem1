@@ -89,6 +89,7 @@ namespace InsectAutoSystem1
             // ImageCodecInfo 객체와 EncoderParameter 객체 배열을 해제합니다.
             encoderParams.Dispose();
             // ImageCodecInfo 객체는 Dispose() 메서드를 호출하지 않아도 됩니다.
+            showMessageDelegate("이미지 촬영이 완료 되었습니다.\r\n");
 
             return true;
 
