@@ -34,9 +34,8 @@ namespace InsectAutoSystem1
 
         private bool scaleConnectCheck;
         private bool cardreaderConnectCheck;
+        private bool controllerConnectCheck;
         private float weight;
-        private String controllerData;
-        private String rfidCode;
         private bool motorRun = false;
 
         public Form1()
@@ -46,6 +45,7 @@ namespace InsectAutoSystem1
             getDeviceInfoThread = new Thread(getDeviceInfo);
             scaleConnectCheck = false;
             cardreaderConnectCheck = false;
+            controllerConnectCheck = false;
         }
 
         private void init()
@@ -114,7 +114,8 @@ namespace InsectAutoSystem1
 
                 foreach(string port in ports)
                 {
-                    if (port.Contains("USB Serial Port"))
+                    if (port.Contains("COM102"))
+                    //if (port.Contains("USB Serial Port"))
                     {
                         ShowMessageDelegate del1 = showMessage;
                         MonitorControllerDataDelegate del2 = monitorControllerData;
@@ -124,7 +125,8 @@ namespace InsectAutoSystem1
                         controller = new Controller(str, del2, del1);
                     }
 
-                    if (port.Contains("Prolific USB"))
+                    if (port.Contains("COM101"))
+                    //if (port.Contains("Prolific USB"))
                     {
                         ShowMessageDelegate del = showMessage;
                         string str = port.Split('(')[1];
@@ -136,7 +138,8 @@ namespace InsectAutoSystem1
 
                     }
 
-                    if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
+                    if (port.Contains("COM103"))
+                    //if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
                     {
                         ShowMessageDelegate del = showMessage;
                         string str = port.Split('(')[1];
@@ -169,13 +172,6 @@ namespace InsectAutoSystem1
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            camera.clear();
-            pictureBox1.Image = null;
-            pictureBox1.Invalidate();
-            Application.Exit();
-        }
 
         private void showMessage(string str)
         {
@@ -191,7 +187,7 @@ namespace InsectAutoSystem1
                 {
                     cbControlPort.Enabled = false;
                     btnConnectController.Enabled = false;
-                    scaleConnectCheck = true;
+                    controllerConnectCheck = true;
                 }
                 if (str == "카드리더가 연결되었습니다.\r\n")
                 {
@@ -239,7 +235,6 @@ namespace InsectAutoSystem1
                 this.Invoke(new Action(delegate () {
                     tbWeight.Text = weight.ToString();
                 }));
-                Thread.Sleep(100);
             }
         }
 
@@ -273,7 +268,15 @@ namespace InsectAutoSystem1
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if (!(scaleConnectCheck || controllerConnectCheck || cardreaderConnectCheck))
+            { 
+                showMessage("제어 연결이 완료되지 않아 시작할 수 없습니다.\r\n");
+                return;
+            }
             motorRun = true;
+            DeviceState.targetFeedWeight = 2.0 + Double.Parse(tbFeedWeight.Text);
+            tbFeedWeight.Enabled = false;
+
             if (!getDeviceInfoThread.IsAlive) 
             {
                 getDeviceInfoThread.Start();
@@ -292,7 +295,11 @@ namespace InsectAutoSystem1
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(getWeightThread.IsAlive)
+            camera.clear();
+            pictureBox1.Image = null;
+            pictureBox1.Invalidate();
+
+            if (getWeightThread.IsAlive)
             {
                 getWeightThread.Abort();
             }
@@ -301,6 +308,36 @@ namespace InsectAutoSystem1
             {
                 getDeviceInfoThread.Abort();
             }
+
+            if (cardreader != null)
+            {
+                cardreader.close();
+            }
+
+            if (controller != null)
+            {
+                controller.close();
+            }
+            
+            if (scale != null)
+            {
+                scale.close();
+            }
+
+            Application.Exit();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리             
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, EventArgs e)
+        {
+            MessageBox.Show("closing");
         }
     }
 }

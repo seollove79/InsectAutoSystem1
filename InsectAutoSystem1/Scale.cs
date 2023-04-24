@@ -60,5 +60,13 @@ namespace InsectAutoSystem1
         {
             return weight;
         }
+
+        public void close()
+        {
+            if(serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+        }
     }
 }

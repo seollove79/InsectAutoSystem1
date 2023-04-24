@@ -19,7 +19,7 @@ namespace InsectAutoSystem1
 
         private static FeedState feedState = FeedState.None;
         private static bool sensorState = false;
-        public static double targetFeedWeight = 2.9;
+        public static double targetFeedWeight = 6.0;
 
         public static void setFeedState(FeedState state)
         {

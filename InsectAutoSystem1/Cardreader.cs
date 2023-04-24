@@ -86,5 +86,13 @@ namespace InsectAutoSystem1
             byte[] readByte = { 0x23, 0x03, 0x02, 0x00, 0x02 };
             serialPort.Write(readByte, 0, readByte.Length);
         }
+
+        public void close()
+        {
+            if(serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+        }
     }
 }

@@ -53,6 +53,10 @@ namespace InsectAutoSystem1
             this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbWeight = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbFeedWeight = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -61,6 +65,7 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -136,14 +141,14 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel3.Controls.Add(this.btnConnectController, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbCardreaderPort, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.btnConnectCardreader, 2, 2);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 30);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(458, 150);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(462, 150);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label4
@@ -159,11 +164,10 @@ namespace InsectAutoSystem1
             // 
             // btnConnectScale
             // 
-            this.btnConnectScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectScale.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectScale.Location = new System.Drawing.Point(329, 3);
+            this.btnConnectScale.Location = new System.Drawing.Point(359, 3);
             this.btnConnectScale.Name = "btnConnectScale";
-            this.btnConnectScale.Size = new System.Drawing.Size(126, 44);
+            this.btnConnectScale.Size = new System.Drawing.Size(100, 44);
             this.btnConnectScale.TabIndex = 2;
             this.btnConnectScale.Text = "연결";
             this.btnConnectScale.UseVisualStyleBackColor = true;
@@ -182,14 +186,13 @@ namespace InsectAutoSystem1
             // 
             // cbScalePort
             // 
-            this.cbScalePort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbScalePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbScalePort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbScalePort.FormattingEnabled = true;
             this.cbScalePort.Location = new System.Drawing.Point(123, 7);
             this.cbScalePort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbScalePort.Name = "cbScalePort";
-            this.cbScalePort.Size = new System.Drawing.Size(200, 36);
+            this.cbScalePort.Size = new System.Drawing.Size(230, 36);
             this.cbScalePort.TabIndex = 0;
             // 
             // label3
@@ -205,23 +208,21 @@ namespace InsectAutoSystem1
             // 
             // cbControlPort
             // 
-            this.cbControlPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbControlPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbControlPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbControlPort.FormattingEnabled = true;
             this.cbControlPort.Location = new System.Drawing.Point(123, 57);
             this.cbControlPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbControlPort.Name = "cbControlPort";
-            this.cbControlPort.Size = new System.Drawing.Size(200, 36);
+            this.cbControlPort.Size = new System.Drawing.Size(230, 36);
             this.cbControlPort.TabIndex = 10;
             // 
             // btnConnectController
             // 
-            this.btnConnectController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectController.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectController.Location = new System.Drawing.Point(329, 53);
+            this.btnConnectController.Location = new System.Drawing.Point(359, 53);
             this.btnConnectController.Name = "btnConnectController";
-            this.btnConnectController.Size = new System.Drawing.Size(126, 44);
+            this.btnConnectController.Size = new System.Drawing.Size(100, 44);
             this.btnConnectController.TabIndex = 8;
             this.btnConnectController.Text = "연결";
             this.btnConnectController.UseVisualStyleBackColor = true;
@@ -229,23 +230,21 @@ namespace InsectAutoSystem1
             // 
             // cbCardreaderPort
             // 
-            this.cbCardreaderPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbCardreaderPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCardreaderPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbCardreaderPort.FormattingEnabled = true;
             this.cbCardreaderPort.Location = new System.Drawing.Point(123, 107);
             this.cbCardreaderPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbCardreaderPort.Name = "cbCardreaderPort";
-            this.cbCardreaderPort.Size = new System.Drawing.Size(200, 36);
+            this.cbCardreaderPort.Size = new System.Drawing.Size(230, 36);
             this.cbCardreaderPort.TabIndex = 13;
             // 
             // btnConnectCardreader
             // 
-            this.btnConnectCardreader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectCardreader.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectCardreader.Location = new System.Drawing.Point(329, 103);
+            this.btnConnectCardreader.Location = new System.Drawing.Point(359, 103);
             this.btnConnectCardreader.Name = "btnConnectCardreader";
-            this.btnConnectCardreader.Size = new System.Drawing.Size(126, 44);
+            this.btnConnectCardreader.Size = new System.Drawing.Size(100, 44);
             this.btnConnectCardreader.TabIndex = 14;
             this.btnConnectCardreader.Text = "연결";
             this.btnConnectCardreader.UseVisualStyleBackColor = true;
@@ -259,7 +258,7 @@ namespace InsectAutoSystem1
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ReadOnly = true;
-            this.tbLog.Size = new System.Drawing.Size(464, 429);
+            this.tbLog.Size = new System.Drawing.Size(464, 432);
             this.tbLog.TabIndex = 4;
             // 
             // tableLayoutPanel5
@@ -324,14 +323,16 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel4.Controls.Add(this.tbBoxCode, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tbWeight, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label5, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 1, 2);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 30);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(455, 100);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(455, 150);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label12
@@ -379,6 +380,55 @@ namespace InsectAutoSystem1
             this.tbWeight.Size = new System.Drawing.Size(354, 43);
             this.tbWeight.TabIndex = 3;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(3, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 50);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "급 이 량";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.tbFeedWeight, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label6, 1, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(101, 103);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(354, 44);
+            this.tableLayoutPanel6.TabIndex = 5;
+            // 
+            // tbFeedWeight
+            // 
+            this.tbFeedWeight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbFeedWeight.Location = new System.Drawing.Point(3, 3);
+            this.tbFeedWeight.Name = "tbFeedWeight";
+            this.tbFeedWeight.Size = new System.Drawing.Size(171, 34);
+            this.tbFeedWeight.TabIndex = 0;
+            this.tbFeedWeight.Text = "1";
+            this.tbFeedWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbFeedWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(180, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(171, 44);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "kg";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -390,6 +440,7 @@ namespace InsectAutoSystem1
             this.Text = "곤충 스마트 급이장치 - 강원도농산물원종장 잠사곤충";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ForeColorChanged += new System.EventHandler(this.Form1_FormClosing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -403,6 +454,8 @@ namespace InsectAutoSystem1
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -433,6 +486,10 @@ namespace InsectAutoSystem1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbCardreaderPort;
         private System.Windows.Forms.Button btnConnectCardreader;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TextBox tbFeedWeight;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -84,6 +84,13 @@ namespace InsectAutoSystem1
             }
         }
 
+        public void close()
+        {
+            if(serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+        }
         
     }
 }
