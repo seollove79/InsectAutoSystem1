@@ -263,6 +263,7 @@ namespace InsectAutoSystem1
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ReadOnly = true;
+            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbLog.Size = new System.Drawing.Size(464, 432);
             this.tbLog.TabIndex = 4;
             // 

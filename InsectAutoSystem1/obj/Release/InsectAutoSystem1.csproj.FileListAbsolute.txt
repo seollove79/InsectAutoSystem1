@@ -20,3 +20,6 @@ D:\devwork\InsectAutoSystem1\InsectAutoSystem1\obj\Release\InsectAutoSystem1.csp
 D:\devwork\InsectAutoSystem1\InsectAutoSystem1\obj\Release\InsectAutoSystem1.csproj.CopyComplete
 D:\devwork\InsectAutoSystem1\InsectAutoSystem1\obj\Release\InsectAutoSystem1.exe
 D:\devwork\InsectAutoSystem1\InsectAutoSystem1\obj\Release\InsectAutoSystem1.pdb
+D:\devwork\InsectAutoSystem1\InsectAutoSystem1\bin\Release\Newtonsoft.Json.dll
+D:\devwork\InsectAutoSystem1\InsectAutoSystem1\bin\Release\Newtonsoft.Json.xml
+D:\devwork\InsectAutoSystem1\InsectAutoSystem1\obj\Release\InsectAutoSystem1.csproj.AssemblyReference.cache

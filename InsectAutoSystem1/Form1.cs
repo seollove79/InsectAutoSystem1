@@ -28,6 +28,7 @@ namespace InsectAutoSystem1
         private Scale scale;
         private Controller controller;
         private Cardreader cardreader;
+        private Diary diary;
 
         private Thread getWeightThread;
         private Thread getDeviceInfoThread;
@@ -46,6 +47,7 @@ namespace InsectAutoSystem1
             scaleConnectCheck = false;
             cardreaderConnectCheck = false;
             controllerConnectCheck = false;
+            diary = new Diary();
         }
 
         private void init()
