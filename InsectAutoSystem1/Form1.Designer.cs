@@ -57,6 +57,10 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tbFeedWeight = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbStartWeight = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -66,6 +70,7 @@ namespace InsectAutoSystem1
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -107,7 +112,7 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(470, 1035);
             this.tableLayoutPanel2.TabIndex = 1;
@@ -254,7 +259,7 @@ namespace InsectAutoSystem1
             this.tbLog.BackColor = System.Drawing.Color.White;
             this.tbLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbLog.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbLog.Location = new System.Drawing.Point(3, 603);
+            this.tbLog.Location = new System.Drawing.Point(3, 663);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ReadOnly = true;
@@ -293,6 +298,7 @@ namespace InsectAutoSystem1
             // 
             this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStop.Enabled = false;
             this.btnStop.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnStop.Location = new System.Drawing.Point(235, 3);
             this.btnStop.Name = "btnStop";
@@ -309,7 +315,7 @@ namespace InsectAutoSystem1
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(3, 403);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(464, 194);
+            this.groupBox4.Size = new System.Drawing.Size(464, 254);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "사육상자 정보";
@@ -325,14 +331,17 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel4.Controls.Add(this.tbWeight, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel7, 1, 3);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 30);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowCount = 4;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(455, 150);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(455, 200);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label12
@@ -414,7 +423,7 @@ namespace InsectAutoSystem1
             this.tbFeedWeight.Name = "tbFeedWeight";
             this.tbFeedWeight.Size = new System.Drawing.Size(171, 34);
             this.tbFeedWeight.TabIndex = 0;
-            this.tbFeedWeight.Text = "1";
+            this.tbFeedWeight.Text = "4";
             this.tbFeedWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbFeedWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -428,6 +437,55 @@ namespace InsectAutoSystem1
             this.label6.TabIndex = 1;
             this.label6.Text = "kg";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(3, 150);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 50);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "시작무게";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.tbStartWeight, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label8, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(101, 153);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(354, 44);
+            this.tableLayoutPanel7.TabIndex = 7;
+            // 
+            // tbStartWeight
+            // 
+            this.tbStartWeight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbStartWeight.Location = new System.Drawing.Point(3, 3);
+            this.tbStartWeight.Name = "tbStartWeight";
+            this.tbStartWeight.Size = new System.Drawing.Size(171, 34);
+            this.tbStartWeight.TabIndex = 0;
+            this.tbStartWeight.Text = "2";
+            this.tbStartWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbStartWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(180, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(171, 44);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "kg";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
@@ -456,6 +514,8 @@ namespace InsectAutoSystem1
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,6 +550,10 @@ namespace InsectAutoSystem1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TextBox tbFeedWeight;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox tbStartWeight;
+        private System.Windows.Forms.Label label8;
     }
 }
 

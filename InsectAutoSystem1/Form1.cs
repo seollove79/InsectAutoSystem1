@@ -254,7 +254,10 @@ namespace InsectAutoSystem1
             motorRun = false;
             controller.sendCommand("motor_stop");
             controller.sendCommand("shuttle_stop");
+            tbFeedWeight.Enabled = true;
+            tbStartWeight.Enabled = true;
             btnStart.Enabled = true;
+            btnStop.Enabled = false;
         }
 
         private void btnConnectController_Click(object sender, EventArgs e)
@@ -269,19 +272,21 @@ namespace InsectAutoSystem1
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (!(scaleConnectCheck || controllerConnectCheck || cardreaderConnectCheck))
-            { 
+            {
                 showMessage("제어 연결이 완료되지 않아 시작할 수 없습니다.\r\n");
                 return;
             }
             motorRun = true;
-            DeviceState.targetFeedWeight = 2.0 + Double.Parse(tbFeedWeight.Text);
+            DeviceState.targetFeedWeight = Double.Parse(tbStartWeight.Text) + Double.Parse(tbFeedWeight.Text);
             tbFeedWeight.Enabled = false;
+            tbStartWeight.Enabled = false;
 
             if (!getDeviceInfoThread.IsAlive) 
             {
                 getDeviceInfoThread.Start();
             }
             btnStart.Enabled = false;
+            btnStop.Enabled = true;
         }
 
         private void feed()
