@@ -30,7 +30,14 @@ namespace InsectAutoSystem1
             serialPort.StopBits = StopBits.One;
             serialPort.Parity = Parity.None;
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
+            if(serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+
             serialPort.Open();
+
+
 
             if (serialPort.IsOpen)
             {
